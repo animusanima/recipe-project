@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {Ingredient} from "../../shared/ingredient.model";
 import {ShoppingListService} from "../shopping-list.service";
 
@@ -13,10 +13,13 @@ export class ShoppingEditComponent implements AfterViewInit {
   @ViewChild('amountInput', {static: false}) amount: ElementRef;
   @ViewChild('indicationInput', {static: false}) indication: ElementRef;
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor(private shoppingListService: ShoppingListService) {
+  }
 
   ngAfterViewInit(): void {
+    // Example of after view init comes here
   }
+
   // Using the ViewChild approach to directly access the component bound to in the html
   // And access the values from the components to create an ingredient and emit an event
 
