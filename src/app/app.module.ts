@@ -17,6 +17,7 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {RouterLinkActive} from "@angular/router";
 import {RecipesStartComponent} from './recipes/recipe-start/recipes-start.component';
 import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
+import {RecipeService} from "./recipes/recipe.service";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
     AppRoutingModule,
     RouterLinkActive
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
