@@ -18,6 +18,7 @@ import {RouterLinkActive} from "@angular/router";
 import {RecipesStartComponent} from './recipes/recipe-start/recipes-start.component';
 import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
 import {RecipeService} from "./recipes/recipe.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {RecipeService} from "./recipes/recipe.service";
     ReactiveFormsModule,
     NgOptimizedImage,
     AppRoutingModule,
-    RouterLinkActive
+    RouterLinkActive,
+    HttpClientModule
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]

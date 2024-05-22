@@ -14,8 +14,8 @@
         <li class="dropdown" appDropDown>
           <a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item">Save Data</a></li>
-            <li><a class="dropdown-item">Fetch Data</a></li>
+            <li><a class="dropdown-item" (click)="saveRecipes()">Save Data</a></li>
+            <li><a class="dropdown-item" (click)="loadRecipes()">Fetch Data</a></li>
           </ul>
         </li>
       </ul>

@@ -9,9 +9,11 @@ export class ShoppingListService {
   ingredientAdded = new Subject<Ingredient[]>();
   startedEditing = new Subject<number>();
 
-  private ingredients = [
-    new Ingredient("Tomato", 1, "ripe")
-  ];
+  // private ingredients = [
+  //   new Ingredient("Tomato", 1, "ripe")
+  // ];
+
+  private ingredients: Ingredient[] = [];
 
   // Receiver of the ingredientAdded event from the shopping-edit component
   addIngredient(ingredient: Ingredient): void {
