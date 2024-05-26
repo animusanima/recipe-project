@@ -27,19 +27,17 @@ export class DataStorageService implements OnInit {
   }
 
   fetchRecipes() {
-    return this.http
-      .get<Recipe[]>(this.getRecipesEndpoint())
+    return this.http.get<Recipe[]>(this.getRecipesEndpoint())
       .pipe(map(recipes => {
-          return recipes.map(value => {
-            return {
-              ...value,
-              ingredients: value.ingredients ? value.ingredients : []
-            }
-          });
-        }), tap(recipes => {
-          this.recipeService.updateRecipes(recipes);
-        })
-      );
+        return recipes.map(value => {
+          return {
+            ...value,
+            ingredients: value.ingredients ? value.ingredients : []
+          }
+        });
+      }), tap(recipes => {
+        this.recipeService.updateRecipes(recipes);
+      }));
   }
 
   private getRecipesEndpoint(): string {

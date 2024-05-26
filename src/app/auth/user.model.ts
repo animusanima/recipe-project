@@ -8,14 +8,14 @@ export class User {
   }
 
   get token() {
-    if (!this.tokenExpirationDate() || new Date() > this.tokenExpirationDate()) {
+    if (!this.tokenExpirationDate || new Date() > this.tokenExpirationDate) {
       return null;
     }
-    return this.token.clone();
+    return this._token;
   }
 
   get tokenExpirationDate() {
-    return this.tokenExpirationDate.clone();
+    return this._tokenExpirationDate;
   }
 
 }
