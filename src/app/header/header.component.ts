@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private dataStorageService: DataStorageService,
               private recipeService: RecipeService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
 
   }
 
@@ -25,6 +26,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // Example of on init comes here
     this.userSubscription = this.authService.userSubject.subscribe(user => {
       this.isAuthenticated = !!user;
+      if (this.isAuthenticated) {
+        this.router.navigate(['recipes']);
+      }
     })
   }
 
