@@ -104,6 +104,17 @@ export class AuthService {
     }, expirationDuration);
   }
 
+  isAuthenticated() {
+    const promise = new Promise<boolean>((resolve, reject) => {
+        setTimeout(() => {
+          const userData = localStorage.getItem('userData');
+          resolve(userData !== null && userData !== undefined && userData !== "");
+        }, 10)
+      }
+    );
+    return promise;
+  }
+
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
     const expiresInMillis: number = expiresIn * 1000;
     const expirationDate: Date = new Date(new Date().getTime() + expiresInMillis);

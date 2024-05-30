@@ -7,6 +7,7 @@ import {RecipeDetailComponent} from "../recipes/recipe-detail/recipe-detail.comp
 import {RecipeEditComponent} from "../recipes/recipe-edit/recipe-edit.component";
 import {RecipesResolver} from "../recipes/recipes.resolver";
 import {AuthComponent} from "../auth/auth.component";
+import {AuthenticatedGuardFn} from "../auth/auth.guard";
 
 const appRoutes: Routes = [
   {
@@ -17,6 +18,8 @@ const appRoutes: Routes = [
   {
     path: 'recipes',
     component: RecipesComponent,
+    canActivate: [AuthenticatedGuardFn],
+    canActivateChild: [AuthenticatedGuardFn],
     children: [
       {
         path: '',
@@ -42,36 +45,22 @@ const appRoutes: Routes = [
   {
     path: 'shopping-list',
     component: ShoppingListComponent,
-    // Example of top-level guarding a navigation destination
-    // canActivate: [isAuthenticatedGuard],
-    // canActivateChild: [AuthenticatedGuardFn],
     children: [
       {
         path: ':id/edit',
-        component: ShoppingListComponent,
-        // canDeactivate: [canDeactivateGuard]
+        component: ShoppingListComponent
       }
     ]
   },
   {
     path: 'auth',
     component: AuthComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/auth'
   }
-  // {
-  //   path: 'not-found',
-  //   component: ErrorPageComponent,
-  //   data: {
-  //     message: 'Page not found'
-  //   }
-  // },
-  // {
-  //   path: 'unauthorized',
-  //   component: UnauthorizedComponent
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: 'not-found'
-  // }
+
 ];
 
 @NgModule({
