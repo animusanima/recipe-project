@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, tap} from "rxjs/operators";
 import {BehaviorSubject, Observable, Subject, throwError} from "rxjs";
 import {User} from "./user.model";
+import {Router} from "@angular/router";
 
 export interface AuthResponseData {
   kind: string,
@@ -20,15 +21,17 @@ export interface AuthResponseData {
 export class AuthService {
   userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
-  private SIGNUP_AUTH_URL: string = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBVkY1pub67h1mVPpCWmY5pjSkshkPEgHs"
-  private LOGIN_AUTH_URL: string = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVkY1pub67h1mVPpCWmY5pjSkshkPEgHs";
+  private SIGNUP_AUTH_URL: string = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=API_KEY"
+  private LOGIN_AUTH_URL: string = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=API_KEY";
+  private API_KEY: string = null;
 
-  constructor(private http: HttpClient) {
-
+  constructor(private http: HttpClient,
+              private router: Router) {
+    this.API_KEY = localStorage.getItem("API_KEY");
   }
 
   signup(email: string, password: string): Observable<AuthResponseData> {
-    return this.http.post<AuthResponseData>(`${this.SIGNUP_AUTH_URL}`,
+    return this.http.post<AuthResponseData>(`${this.SIGNUP_AUTH_URL.replace('API_KEY', this.API_KEY)}`,
       {
         email: email,
         password: password,
@@ -47,7 +50,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<AuthResponseData> {
-    return this.http.post<AuthResponseData>(`${this.LOGIN_AUTH_URL}`, {
+    return this.http.post<AuthResponseData>(`${this.LOGIN_AUTH_URL.replace('API_KEY', this.API_KEY)}`, {
       email: email,
       password: password,
       returnSecureToken: true
@@ -63,6 +66,11 @@ export class AuthService {
       }));
   }
 
+  logout() {
+    this.userSubject.next(null);
+    this.router.navigate(['/auth']);
+  }
+
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
     const expirationDate: Date = new Date(new Date().getTime() + (expiresIn * 1000));
     const user = new User(
@@ -72,6 +80,8 @@ export class AuthService {
       expirationDate
     );
     this.userSubject.next(user);
+
+    localStorage.setItem("userData", JSON.stringify(user));
   }
 
   private handleError(errorResponse: HttpErrorResponse) {

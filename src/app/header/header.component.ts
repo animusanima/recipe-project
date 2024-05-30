@@ -3,6 +3,7 @@ import {DataStorageService} from "../shared/data-storage.service";
 import {AuthService} from "../auth/auth.service";
 import {Subscription} from "rxjs";
 import {RecipeService} from "../recipes/recipe.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -39,6 +40,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.dataStorageService.fetchRecipes().subscribe(recipes => {
       this.recipeService.updateRecipes(recipes);
     });
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
 }
