@@ -32,17 +32,19 @@
 
       <div class="row">
         <div class="col-xs-12">
-          <div class="panel panel-danger" *ngIf="error">
-            <div class="panel-heading">
-              <h3>An error occurred <span class="badge pull-right" aria-hidden="true">{{ error?.status }}</span></h3>
-            </div>
-            <div class="panel-body">
-              <h4>{{ error?.message }}</h4>
-              <p>{{ error?.detailMessage }}</p>
-              <hr/>
-              <button type="button" class="btn-lg btn-block btn-danger" (click)="onHandleError()">Close Error</button>
-            </div>
-          </div>
+          <app-alert [message]="error?.message"
+                     [detailMessage]="error?.detailMessage" *ngIf="error"></app-alert>
+<!--          <div class="panel panel-danger" *ngIf="error">-->
+<!--            <div class="panel-heading">-->
+<!--              <h3>An error occurred <span class="badge pull-right" aria-hidden="true">{{ error?.status }}</span></h3>-->
+<!--            </div>-->
+<!--            <div class="panel-body">-->
+<!--              <h4>{{ error?.message }}</h4>-->
+<!--              <p>{{ error?.detailMessage }}</p>-->
+<!--              <hr/>-->
+<!--              <button type="button" class="btn-lg btn-block btn-danger" (click)="onHandleError()">Close Error</button>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
 
