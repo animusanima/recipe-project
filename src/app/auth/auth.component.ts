@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
 import {NgForm} from "@angular/forms";
 import {AuthResponseData, AuthService} from "./auth.service";
 import {Observable} from "rxjs";
@@ -13,6 +13,7 @@ export class AuthComponent {
   isLoginMode = false;
   isLoading = false;
   error = null;
+
 
   constructor(private authService: AuthService,
               private router: Router) {
