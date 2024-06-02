@@ -18,13 +18,12 @@ import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.
 import {AuthInterceptorService} from "./auth/auth-interceptor/auth-interceptor.service";
 import {AlertComponent} from "./shared/alert/alert.component";
 import {RecipesModule} from "./recipes/recipes.module";
+import {ShoppingListModule} from "./shopping-list/shopping-list.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     DropdownDirective,
     AuthComponent,
     LoadingSpinnerComponent,
@@ -38,6 +37,7 @@ import {RecipesModule} from "./recipes/recipes.module";
     RouterLinkActive,
     HttpClientModule,
     RecipesModule,
+    ShoppingListModule,
     AppRoutingModule,
   ],
   providers: [ShoppingListService, RecipeService,

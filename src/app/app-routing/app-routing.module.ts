@@ -9,16 +9,7 @@ const appRoutes: Routes = [
     redirectTo: 'auth',
     pathMatch: 'full',
   },
-  {
-    path: 'shopping-list',
-    component: ShoppingListComponent,
-    children: [
-      {
-        path: ':id/edit',
-        component: ShoppingListComponent
-      }
-    ]
-  },
+
   {
     path: 'auth',
     component: AuthComponent
