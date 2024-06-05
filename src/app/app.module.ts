@@ -9,9 +9,6 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {AuthInterceptorService} from "./auth/auth-interceptor/auth-interceptor.service";
 import {HeaderComponent} from './header/header.component';
-import {RecipesModule} from "./recipes/recipes.module";
-import {ShoppingListModule} from "./shopping-list/shopping-list.module";
-import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -24,9 +21,6 @@ import {AuthModule} from "./auth/auth.module";
     NgOptimizedImage,
     RouterLinkActive,
     HttpClientModule,
-    RecipesModule,
-    ShoppingListModule,
-    AuthModule,
     AppRoutingModule,
   ],
   providers: [

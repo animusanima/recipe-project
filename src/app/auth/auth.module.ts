@@ -12,12 +12,8 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent
-  },
-  {
-    path: '**',
-    redirectTo: '/auth'
   }
 ]
 

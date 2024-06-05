@@ -1,9 +1,9 @@
 import {NgModule} from "@angular/core";
+import {RouterModule, Routes} from "@angular/router";
 
 import {AuthenticatedGuardFn} from "../auth/auth.guard";
 import {RecipesResolver} from "./recipes.resolver";
 
-import {RouterModule, Routes} from "@angular/router";
 import {RecipesComponent} from "./recipes.component";
 import {RecipesStartComponent} from "./recipe-start/recipes-start.component";
 import {RecipeEditComponent} from "./recipe-edit/recipe-edit.component";
@@ -11,7 +11,7 @@ import {RecipeDetailComponent} from "./recipe-detail/recipe-detail.component";
 
 const routes: Routes = [
   {
-    path: 'recipes',
+    path: '',
     component: RecipesComponent,
     canActivate: [AuthenticatedGuardFn],
     canActivateChild: [AuthenticatedGuardFn],
